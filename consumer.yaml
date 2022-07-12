@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskprocessor
+spec:
+  selector:
+    matchLabels:
+      app: taskprocessor
+  template:
+    metadata:
+      labels:
+        app: taskprocessor
+    spec:
+      containers:
+      - name: taskprocessor
+        image: weiqing123/taskprocessor
+        env:
+        - name: RABBITMQ_HOST
+          value: "rabbitmq"
+        - name: RABBITMQ_PORT
+          value: "5672"
